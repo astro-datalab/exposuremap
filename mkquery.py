@@ -193,5 +193,5 @@ AND instrument LIKE 'mosaic%')) OR ((telescope = 'bok23m' AND instrument = '90pr
     hp.graticule(dpar=45.,dmer=30.,coord='C')
     plt.savefig(pngfile1,dpi=300)
     plt.savefig(pngfile2,dpi=600)
-    plt.savefig('/Users/olsen/Dropbox/ExposureMap/'+pngfile1,dpi=300)
-    plt.savefig('/Users/olsen/Dropbox/ExposureMap/'+pngfile2,dpi=600)
+    #plt.savefig('/Users/olsen/Dropbox/ExposureMap/'+pngfile1,dpi=300)
+    #plt.savefig('/Users/olsen/Dropbox/ExposureMap/'+pngfile2,dpi=600)
