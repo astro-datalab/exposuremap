@@ -80,7 +80,7 @@ def mkmap(df,nside=256):
             vec=hp.ang2vec(ra0,dec0,lonlat=True)
             #ipix=hp.query_polygon(nside,vec)
             ipix=hp.query_disc(nside,vec,radius)
-            map[ipix]=map[ipix]+np.float(row['exposure'])
+            map[ipix]=map[ipix]+float(row['exposure'])
             ptabd['np'][idx]=len(ipix)
             ptabd['ind'][idx][0:len(ipix)]=ipix
 
@@ -98,7 +98,7 @@ def mkmap(df,nside=256):
             vec=hp.ang2vec(ra1,dec1,lonlat=True)
             try:
                 ipix=hp.query_polygon(nside,vec)
-                map[ipix]=map[ipix]+np.float(row['exposure'])
+                map[ipix]=map[ipix]+float(row['exposure'])
                 ptabm['np'][idx]=len(ipix)
                 ptabm['ind'][idx][0:len(ipix)]=ipix
             except RuntimeError:
@@ -121,7 +121,7 @@ def mkmap(df,nside=256):
             vec=hp.ang2vec(ra1,dec1,lonlat=True)
             try:
                 ipix=hp.query_polygon(nside,vec)
-                map[ipix]=map[ipix]+np.float(row['exposure'])
+                map[ipix]=map[ipix]+float(row['exposure'])
                 ptabb['np'][idx]=len(ipix)
                 ptabb['ind'][idx][0:len(ipix)]=ipix
             except RuntimeError:
