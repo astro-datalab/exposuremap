@@ -23,7 +23,7 @@ from pprint import pprint as pp  # pretty print
 
 natroot = 'https://astroarchive.noirlab.edu'
 fieldlist = ["archive_filename","ra_center","dec_center","proposal","ifilter","MJD-OBS","OBJECT","survey","dateobs_center","instrument","proc_type","exposure","obs_type","prod_type"]
-searchlist = [["instrument", "decam", "90prime", "mosaic", "mosaic3", "mosaic_1", "mosaic_1_1", "mosaic_2"], ["prod_type","image"],["proc_type","raw"],["obs_type","object"],["exposure",30.,36000.]]
+searchlist = [["instrument", "decam", "90prime", "mosaic", "mosaic3", "mosaic_1", "mosaic_1_1", "mosaic_2"], ["prod_type","image"],["proc_type","raw"],["obs_type","object"],["exposure",30.,36000.],["caldat","1900-01-01","2023-10-01"]]
 
 adsurl = f'{natroot}/api/adv_search'
 
@@ -147,14 +147,11 @@ if __name__ == '__main__':
         elif opt in ("-o","--out"):
             outfile=arg
         elif opt in ("-s","--searchlist"):
-            searchlist=arg
-        elif opt in ("-s","--fieldlist"):
-            fieldlist=arg
+            searchlist=eval(arg)
+        elif opt in ("-f","--fieldlist"):
+            fieldlist=eval(arg)
         elif opt in ("-n","--nside"):
             nside=np.int(arg)
-
-    fieldlist = ["archive_filename","ra_center","dec_center","proposal","ifilter","MJD-OBS","OBJECT","survey","dateobs_center","instrument","proc_type","exposure","obs_type","prod_type"]
-    searchlist = [["instrument", "decam", "90prime", "mosaic", "mosaic3", "mosaic_1", "mosaic_1_1", "mosaic_2"], ["prod_type","image"],["proc_type","raw"],["obs_type","object"],["exposure",30.,36000.]]
 
     df=dbquery(searchlist,fieldlist)
     (map,ptab)=mkmap(df,nside=nside)
